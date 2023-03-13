@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="with=devide-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <title>POMODORO 🍅</title> 
+    <style>
+        body {
+          background-color: #ff6b6b;
+          text-align: center;
+        }
+    </style>
+    <link rel='stylesheet' type='text/css' href='styles/main.css'/>
+    <link rel="icon" sizes="144x144" href="assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/icon-152x152.png"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+     <meta name="apple-mobile-web-app-title" content="Pomodoro 🍅">
+    <meta name="theme-color" content="#cf3145">
+    <meta property="og:title" content="Pomodoro 🍅">
+    <meta property="og:type" content="website">
+    <meta property="og:description"
+        content="Tenha o método pomodoro na home do seu celular, simples e intuitivo! ">
+</head>
+<body>
+
+    <div id="header">
+        <h3>pomodoro app</h1>
+    </div id="mometum-container">
+        <h2>pomodoro</h2>
+        <h2>pausa</h2>
+    <div id="clock-container">
+        <div>
+            <span id="minutes">25</span>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+        </div>
+    </div>
+    <div id="div-buttons"> 
+        <button>iniciar</button>
+        <button>pausar</button>
+        <button>recomeçar</button>
+    </div>
+   
+    
+   <script type="text/javascript">
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('pomodoro_sw.js', {
+            scope: '/pomodoro-pwa/'
+          })
+            .then(function (reg) {
+              console.log(`Service Worker Registered. Scope: ${reg.scope}`);
+            });
+    
+          navigator.serviceWorker.ready.then(function (reg) {
+            console.log('Service Worker Ready');
+          })
+        }
+      </script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
