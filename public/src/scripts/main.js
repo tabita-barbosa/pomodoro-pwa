@@ -82,7 +82,7 @@ function startTimer() {
 
             if (Notification.permission === 'granted') {
                 const text =
-                  timer.mode === 'pomodoro' ? 'Volte aos estudos!' : 'Faça uma pausa!';
+                  timer.mode === 'pomodoro' ? 'Foco total!' : 'Faça uma pausa!';
                 new Notification(text);
             }
 
@@ -110,7 +110,7 @@ function updateClock() {
     sec.textContent = seconds;
 
     const text =
-    timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+    timer.mode === 'pomodoro' ? 'Foco total!' : 'Faça uma pausa!';
       document.title = `${minutes}:${seconds} — ${text}`;
 
 }
