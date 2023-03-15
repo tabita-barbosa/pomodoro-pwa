@@ -7,10 +7,15 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+window.addEventListener('beforeinstallprompt', function (event) {
+  event.preventDefault();
+  appInstaller = event;
+  return false;
+});
+
+let interval;
 const startBtn = document.getElementById('btn-init');
 const modeButtons = document.getElementById('mode-buttons');
-let interval;
-
 modeButtons.addEventListener('click', handleMode);
 document.addEventListener('DOMContentLoaded', () => {
   switchMode('pomodoro');
@@ -72,6 +77,7 @@ function startTimer() {
   interval = setInterval(function () {
     timer.remainingTime = getRemainingTime(endTime);
     updateClock();
+
     total = timer.remainingTime.total;
     if (total <= 0) {
       clearInterval(interval);
@@ -92,6 +98,14 @@ function startTimer() {
         const text =
           timer.mode === 'pomodoro' ? 'Foco total!' : 'Faça uma pausa!';
         new Notification(text);
+        if (timer.mode === 'pomodoro') {
+          var WORKSOUND = '/src/assets/sounds/worktime.mp3';
+          new Audio(WORKSOUND).play();
+        }
+        if (timer.mode === '') {
+          var WORKSOUND = '/src/assets/sounds/worktime.mp3';
+          new Audio(WORKSOUND).play();
+        }
       }
 
       startTimer();
@@ -139,6 +153,16 @@ function getRemainingTime(endTime) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  if ('Notification' in window) {
+    if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === 'granted') {
+          new Notification(
+            'Muito bem! Você será notificado ao inicio de cada sessão'
+          );
+        }
+      });
+    }
+  }
   switchMode('pomodoro');
 });
-

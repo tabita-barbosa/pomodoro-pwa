@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
-    <title>POMODORO 🍅</title> 
+    <title>POMODORO 🍅</title>
     <link rel='stylesheet' type='text/css' href='src/styles/style.css'>
     <link rel="icon" sizes="144x144" href="src/assets/icons/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="src/assets/icons/icon-144x144.png"/>
-    <link rel="apple-touch-icon" sizes="152x152" href="src/assets/icons/icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="src/assets/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="src/assets/icons/icon-152x152.png" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-     <meta name="apple-mobile-web-app-title" content="Pomodoro 🍅">
+    <meta name="apple-mobile-web-app-title" content="Pomodoro 🍅">
 </head>
+
 <body>
     <div id="header" class="header">
         <h1>pomodoro app</h1>
     </div>
 
     <div class="modes">
-        <div id="mode-buttons" class="button-group mode-buttons" >
+        <div id="mode-buttons" class="button-group mode-buttons">
             <button data-mode="pomodoro" class="button active mode-button" id="pomodoro-mode">pomodoro</button>
             <button data-mode="longBreak" class="button mode-button" id="long-pause-mode">pausa longa</button>
             <button data-mode="shortBreak" class="button mode-button" id="short-pause-mode">pausa curta</button>
         </div>
     </div>
-    
+
 
     <div id="clock-container" class="clock">
         <span id="minutes">25</span>
@@ -35,9 +37,15 @@
         <span id="seconds">00</span>
     </div>
 
-    <div id="buttons-container"> 
+    <div id="buttons-container">
         <button data-action="start" class="main-button" id="btn-init">iniciar</button>
     </div>
+
+    <div class="hidden">
+        <audio src="src/assets/sounds/worktime.mp3" data-sound="pomodoro"></audio>
+        <audio src="src/assets/sounds/stop.mp3" data-sound="shortBreak"></audio>
+        <audio src="src/assets/sounds/stop.mp3" data-sound="longBreak"></audio>
+    </div> 
 
     <script src="src/scripts/main.js"></script>
 </body>
