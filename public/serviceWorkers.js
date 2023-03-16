@@ -1,40 +1,27 @@
-var DYNAMIC = 'static-73'
-var STATIC_CACHE = 'dynamic';
-var STATIC_FILES = [
+var CACHE_NAME = 'my-app-cache-v1'
+var filesToCache = [
   '/manifest.json ',
   '/index.html',
   '/main.js',
-  'src/styles/style.css',
-  'src/assets/icons/icon-144x144.png',
-  'src/assets/icons/icon-192x192.png',
-  'src/assets/icons/icon-512x512.png',
-  'src/assets/sounds/stop.mp3',
-  'src/assets/sounds/worktime.mp3'
+  '/src/styles/style.css',
+  '/public/src/assets/icons/icon-144x144.png',
+  '/public/src/assets/icons/icon-192x192.png',
+  '/public/src/assets/sounds/stop.mp3',
+  '/public/src/assets/sounds/worktime.mp3'
 ]
 
-self.addEventListener('install', function (event) {
-  console.log('service worker - installing', event);
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('static').then(function (cache) {
-      console.log('precacheamento');
-      cache.addAll(STATIC_FILES)
-    })
+    (async () => {
+      try {
+        cache_obj = await caches.open(cache)
+        cache_obj.addAll(filesToCache)
+      }
+      catch {
+        console.log("error occured while caching...", console.error())
+      }
+    })()
   )
-});
-
-self.addEventListener('activate', function (event) {
-  event.waitUntil(
-    caches.keys()
-      .then(function (keyList) {
-        var promises = keyList.map(function (key) {
-          if ((key !== STATIC_CACHE) && (key !== DYNAMIC_CACHE)) {
-            return caches.delete(key);
-          }
-        })
-        return Promise.all(promises);
-      })
-  )
-  console.log('service worker - activating', event);
 });
 
 self.addEventListener('fetch', function (event) {

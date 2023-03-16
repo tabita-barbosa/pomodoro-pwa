@@ -4,6 +4,9 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/serviceWorkers.js')
     .then(function () {
       console.log('service worker registred');
+    })
+    .catch(function (err) {
+      console.log('service worker failed', err)
     });
 }
 
@@ -61,8 +64,6 @@ function switchMode(mode) {
 
   updateClock();
 }
-
-// SET CLOCK INTERVAL
 
 function startTimer() {
   let { total } = timer.remainingTime;
