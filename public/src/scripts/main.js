@@ -102,12 +102,11 @@ function startTimer() {
           var WORKSOUND = '/src/assets/sounds/worktime.mp3';
           new Audio(WORKSOUND).play();
         }
-        if (timer.mode === '') {
+        if (timer.mode === 'shortBreak' || timer.mode === 'longBreak') {
           var WORKSOUND = '/src/assets/sounds/worktime.mp3';
           new Audio(WORKSOUND).play();
         }
       }
-
       startTimer();
     }
   }, 1000);

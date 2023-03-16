@@ -7,7 +7,9 @@ var STATIC_FILES = [
   'src/styles/style.css',
   'src/assets/icons/icon-144x144.png',
   'src/assets/icons/icon-192x192.png',
-  'src/assets/icons/icon-512x512.png'
+  'src/assets/icons/icon-512x512.png',
+  'src/assets/sounds/stop.mp3',
+  'src/assets/sounds/worktime.mp3'
 ]
 
 self.addEventListener('install', function (event) {
